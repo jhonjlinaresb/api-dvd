@@ -1,6 +1,8 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 
+const apiRouter = require('./routes/api');
+
 const app = express();
 
 require('./db');
@@ -8,9 +10,12 @@ require('./db');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true}));
 
-app.get('/', (req, res) => {
+app.use('/api', apiRouter);
+
+/* app.get('/', (req, res) => {
     res.send('Server Online!');
-});
+}); Prueba de servidor */
+
 
 app.listen(3000, ()=>{
     console.log('Server Online!')
