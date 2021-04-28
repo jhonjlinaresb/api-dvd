@@ -12,16 +12,30 @@ router.post('/', async (req, res) => {
     res.json(dvd);
 });
 
-router.get('/:dvdId', async (req, res) => {
-    const viewDvd = await Dvd.findAll( req.body, { 
+
+
+/* router.get('/:dvdId', async (req, res) => {
+    const viewDvd = await dvdModel.find( req.body, { 
         where: { id: req.params.dvdId} });
     res.json(viewDvd);
-});
-
-/* router.get('/:id', async (req, res) => {
-    const viewDvd = await Dvd.find( { id: req.params.id} );
-    res.json(viewDvd);
 }); */
+
+router.get('/:dvdId', async (req, res) => {
+        try {
+            const dvdView = await Dvd.dvdModel.find({
+                id: req.params.dvdId
+            })
+            res.send({
+                dvdView
+            })
+        } catch (error) {
+            console.error(error);
+            res.status(500).send({
+                message: 'no se pueden mostrar el dvd'
+            })
+            
+        }   
+});
 
 router.put('/:dvdId', async (req, res) => {
     await Dvd.update(req.body, {
