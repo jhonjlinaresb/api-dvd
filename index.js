@@ -12,9 +12,9 @@ app.use(bodyParser.urlencoded({ extended: true}));
 
 app.use('/api', apiRouter);
 
-/* app.get('/', (req, res) => {
+app.get('/', (req, res) => {
     res.send('Server Online!');
-}); Prueba de servidor */
+});
 
 
 app.listen(3000, ()=>{
