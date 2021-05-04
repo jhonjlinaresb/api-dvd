@@ -14,7 +14,7 @@ app.use('/api', apiRouter);
 
 app.get('/', (req, res) => {
     res.send('Server Online!');
-});
+}); //Montaje del servidor
 
 
 app.listen(3000, ()=>{
