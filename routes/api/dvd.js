@@ -13,8 +13,8 @@ router.post('/', async (req, res) => {
 });
 
 router.get('/:dvdId', async (req, res) => {
-    const viewDvd = await Dvd.findOne(
-         {id: req.params.dvdId} );
+    const viewDvd = await Dvd.findOne({
+         where: {id: req.params.dvdId}} );
     res.json(viewDvd);
 });
 
