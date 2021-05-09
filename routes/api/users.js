@@ -27,17 +27,23 @@ router.post('/login', async (req, res) =>{
     if (user) {
         const verifyPass = bcrypt.compareSync(req.body.password, user.password);
         if (verifyPass) {
-            res.json({ success: 'TOKEN'});
+            res.json({ success: createToken(user) });
         } else {
             res.json({ error: 'La contraseña es incorrecta'});
-        }
+        };
     } else {
         res.json({ error: 'Error en email y/o contraseña'});
     }
 });
 
 const createToken = (user) => {
-
-}
+    const payload = {
+        userId: user.id,
+        createdAt: moment().unix(),
+        expiredAt: moment().add(5, 'minutes').unix()
+    }
+    
+    return jwt.encode(payload, 'SECRETHAUTH');
+};
 
 module.exports = router;
