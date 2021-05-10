@@ -21,6 +21,9 @@
 
 Routes:
 
-- GET / = Server Online!
-- 
-[]()
+- GET (/) = Server Online!
+- GET (/api/) = Get all the Dvds.
+- GET (/api/dvd/1) = Get DVD by id, where 1 is the id to be searched for.
+- POST (/) = Create the Dvd.
+- PUT (/api/dvd/1) = Modify dvd by id, where 1 is the selected Id.
+
